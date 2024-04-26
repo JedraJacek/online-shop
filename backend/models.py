@@ -21,7 +21,7 @@ class Cart(models.Model):
 
 class Users(models.Model):
     login = models.EmailField()
-    password = models.CharField()
+    password = models.CharField(max_length=300)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
 
