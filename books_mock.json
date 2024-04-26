@@ -1,6 +1,6 @@
 [
   { 
-    "pk": "001",
+    "pk": 1,
     "author": "Chinua Achebe",
     "country": "Nigeria",
     "image": "https://unsplash.com/photos/9DaOYUYnOls",
@@ -13,7 +13,7 @@
     "price": 19.99
   },
   {
-    "pk": "002",
+    "pk": 2,
     "author": "Hans Christian Andersen",
     "country": "Denmark",
     "image": "https://unsplash.com/photos/CXYPfveiuis",
@@ -26,7 +26,7 @@
     "price": 12.50
   },
   {
-    "pk": "003",
+    "pk": 3,
     "author": "Dante Alighieri",
     "country": "Italy",
     "image": "https://unsplash.com/photos/9zsHNt5OpqE",
@@ -39,7 +39,7 @@
     "price": 13.99
   },
   {
-    "pk": "004",
+    "pk": 4,
     "author": "Unknown",
     "country": "Sumer and Akkadian Empire",
     "image": "https://unsplash.com/photos/bhBONc07WsI",
@@ -52,7 +52,7 @@
     "price": 20.00
   },
   {
-    "pk": "005",
+    "pk": 5,
     "author": "Unknown",
     "country": "Achaemenpk Empire",
     "image": "https://unsplash.com/photos/g827ZOCwt30",
@@ -65,7 +65,7 @@
     "price": 15.99
   },
   {
-    "pk": "006",
+    "pk": 6,
     "author": "Unknown",
     "country": "India/Iran/Iraq/Egypt/Tajikistan",
     "image": "https://unsplash.com/photos/UhdlN7u87nA",
@@ -78,7 +78,7 @@
     "price": 17.99
   },
   {
-    "pk": "007",
+    "pk": 7,
     "author": "Unknown",
     "country": "Iceland",
     "image": "https://unsplash.com/photos/zMRLZh40kms",
@@ -91,7 +91,7 @@
     "price": 11.99
   },
   {
-    "pk": "008",
+    "pk": 8,
     "author": "Jane Austen",
     "country": "United Kingdom",
     "image": "https://unsplash.com/photos/-FVaZbu6ZAE",
@@ -104,7 +104,7 @@
     "price": 9.99
   },
   {
-    "pk": "009",
+    "pk": 9,
     "author": "Honor\u00e9 de Balzac",
     "country": "France",
     "image": "https://unsplash.com/photos/YTRtCfniV8I",
@@ -117,7 +117,7 @@
     "price": 14.99
   },
   {
-    "pk": "010",
+    "pk": 10,
     "author": "Samuel Beckett",
     "country": "Republic of Ireland",
     "image": "https://unsplash.com/photos/DRZQLqm-wk8",
