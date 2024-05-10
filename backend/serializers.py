@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Books, Cart
+from .models import Books, Cart, Addresses
 
 
 class BookSerializer(serializers.ModelSerializer):
@@ -12,4 +12,11 @@ class CartSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cart
-        fields = ("pk","user_pk","count")
+        fields = ("pk","product_pk","user_pk","count")
+
+
+class AddressSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Addresses
+        fields = ("pk","line1","line2","city","zip_code","user_pk")

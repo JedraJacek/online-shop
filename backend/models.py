@@ -23,7 +23,7 @@ class Users(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
 
-class Adresses(models.Model):
+class Addresses(models.Model):
     line1 = models.CharField(max_length=200)
     line2 = models.CharField(max_length=200)
     city = models.CharField(max_length=200)
