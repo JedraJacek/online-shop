@@ -6,15 +6,12 @@ import Content from './components/Content/Content';
 function App() {
   return (
        <ChakraProvider>
-
-        <SimpleGrid columns={4} spacing={100}>
-        <Content/>
-        <Content/>
-        <Content/>
-        <Content/>
-        </SimpleGrid>
-
-
+          <SimpleGrid columns={4} spacing={50}>
+            <Content/>
+            <Content/>
+            <Content/>
+            <Content/>
+          </SimpleGrid>
        </ChakraProvider>
   )
 }

@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Stack, Text,Image,Grid, GridItem} from '@chakra-ui/react'
+import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Stack, Text,Image,} from '@chakra-ui/react'
 import React from 'react'
 
 
@@ -12,14 +12,14 @@ export default function Content() {
       alt='Green double couch with wooden legs'
       borderRadius='lg'
     />
-    <Stack mt='6' spacing='3'>
+    <Stack >
       <Heading size='md'>Cool book with white pages</Heading>
       <Text color='blue.600' fontSize='2xl'>
         $450
       </Text>
     </Stack>
   </CardBody>
-  <Divider />
+  
   <CardFooter>
     <ButtonGroup spacing='2'>
       <Button variant='solid' colorScheme='blue'>
