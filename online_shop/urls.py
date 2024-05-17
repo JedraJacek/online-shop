@@ -25,5 +25,6 @@ urlpatterns = [
     path('books/', BooksView.as_view()),
     path('cart/', CartView.as_view()),
     path('users/', UserView.as_view()),
-    path('cart/add/', addToCart.as_view())
+    path('cart/add/', updateCart.as_view()),
+    path('cart/delete/', removeFromCart.as_view())
 ]

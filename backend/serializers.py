@@ -10,9 +10,17 @@ class BookSerializer(serializers.ModelSerializer):
 
 class CartSerializer(serializers.ModelSerializer):
     product = BookSerializer(source = 'product_pk', read_only = True)
+
     class Meta:
         model = Cart
         fields = ("pk","product", "user_pk","count")
+
+class CartAddSerializer(serializers.ModelSerializer):
+    product_pk = serializers.PrimaryKeyRelatedField(read_only=False, queryset= Books.objects.all())
+    
+    class Meta:
+        model = Cart
+        fields = ("pk","product_pk", "user_pk","count")
 
 class UserSerializer(serializers.ModelSerializer):
 
