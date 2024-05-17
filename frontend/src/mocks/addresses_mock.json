@@ -1,0 +1,18 @@
+[
+    {
+        "pk": 1,
+        "line1" : "Przełajowa 4",
+        "line2" : "",
+        "city" : "Poznań",
+        "zip_code" : "61-622",
+        "user_pk" : 1
+    },
+    {
+        "pk": 2,
+        "line1" : "Przełajowa 6",
+        "line2" : "",
+        "city" : "Poznań",
+        "zip_code" : "61-622",
+        "user_pk" : 1
+    }
+]

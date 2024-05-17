@@ -1,0 +1,14 @@
+[
+    {
+        "pk": 1,
+        "product_pk": 3,
+        "user_pk": 1,
+        "count": 1
+    },
+    {
+        "pk": 2,
+        "product_pk": 8,
+        "user_pk": 1,
+        "count": 2
+    }
+]

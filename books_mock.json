@@ -1,0 +1,162 @@
+[
+  { 
+    "model": "backend.Books",  
+    "pk": 1,
+    "fields": {
+      "author": "Chinua Achebe",
+      "country": "Nigeria",
+      "image": "https://unsplash.com/photos/9DaOYUYnOls",
+      "language": "English",
+      "description": "https://en.wikipedia.org/wiki/Things_Fall_Apart\n",
+      "pages": 209,
+      "title": "Things Fall Apart",
+      "year": 1958,
+      "stock": 23,
+      "price": 19.99
+    }
+  },
+  {
+    "model": "backend.Books",
+    "pk": 2,
+    "fields": {
+      "author": "Hans Christian Andersen",
+      "country": "Denmark",
+      "image": "https://unsplash.com/photos/CXYPfveiuis",
+      "language": "Danish",
+      "description": "https://en.wikipedia.org/wiki/Fairy_Tales_Told_for_Children._First_Collection.\n",
+      "pages": 784,
+      "title": "Fairy tales",
+      "year": 1836,
+      "stock": 345,
+      "price": 12.50
+    }
+  },
+  {
+    "model": "backend.Books",
+    "pk": 3,
+    "fields": {
+      "author": "Dante Alighieri",
+      "country": "Italy",
+      "image": "https://unsplash.com/photos/9zsHNt5OpqE",
+      "language": "Italian",
+      "description": "https://en.wikipedia.org/wiki/Divine_Comedy\n",
+      "pages": 928,
+      "title": "The Divine Comedy",
+      "year": 1315,
+      "stock": 78,
+      "price": 13.99
+    }
+  },
+  {
+    "model": "backend.Books",
+    "pk": 4,
+    "fields": {
+      "author": "Unknown",
+      "country": "Sumer and Akkadian Empire",
+      "image": "https://unsplash.com/photos/bhBONc07WsI",
+      "language": "Akkadian",
+      "description": "https://en.wikipedia.org/wiki/Epic_of_Gilgamesh\n",
+      "pages": 160,
+      "title": "The Epic Of Gilgamesh",
+      "year": -1700,
+      "stock": 54,
+      "price": 20.00
+    }
+  },
+  {
+    "model": "backend.Books",
+    "pk": 5,
+    "fields": {
+      "author": "Unknown",
+      "country": "Achaemenpk Empire",
+      "image": "https://unsplash.com/photos/g827ZOCwt30",
+      "language": "Hebrew",
+      "description": "https://en.wikipedia.org/wiki/Book_of_Job\n",
+      "pages": 176,
+      "title": "The Book Of Job",
+      "year": -600,
+      "stock": 86,
+      "price": 15.99
+    }
+  },
+  {
+    "model": "backend.Books",
+    "pk": 6,
+    "fields": {
+      "author": "Unknown",
+      "country": "India/Iran/Iraq/Egypt/Tajikistan",
+      "image": "https://unsplash.com/photos/UhdlN7u87nA",
+      "language": "Arabic",
+      "description": "https://en.wikipedia.org/wiki/One_Thousand_and_One_Nights\n",
+      "pages": 288,
+      "title": "One Thousand and One Nights",
+      "year": 1200,
+      "stock": 867,
+      "price": 17.99
+    }
+  },
+  {
+    "model": "backend.Books",
+    "pk": 7,
+    "fields": {
+      "author": "Unknown",
+      "country": "Iceland",
+      "image": "https://unsplash.com/photos/zMRLZh40kms",
+      "language": "Old Norse",
+      "description": "https://en.wikipedia.org/wiki/Nj%C3%A1ls_saga\n",
+      "pages": 384,
+      "title": "Nj\u00e1l's Saga",
+      "year": 1350,
+      "stock": 53,
+      "price": 11.99
+    }
+  },
+  {
+    "model": "backend.Books",
+    "pk": 8,
+    "fields": {
+      "author": "Jane Austen",
+      "country": "United Kingdom",
+      "image": "https://unsplash.com/photos/-FVaZbu6ZAE",
+      "language": "English",
+      "description": "https://en.wikipedia.org/wiki/Prpke_and_Prejudice\n",
+      "pages": 226,
+      "title": "Prpke and Prejudice",
+      "year": 1813,
+      "stock": 27,
+      "price": 9.99
+    }
+  },
+  {
+    "model": "backend.Books",
+    "pk": 9,
+    "fields": {
+      "author": "Honor\u00e9 de Balzac",
+      "country": "France",
+      "image": "https://unsplash.com/photos/YTRtCfniV8I",
+      "language": "French",
+      "description": "https://en.wikipedia.org/wiki/Le_P%C3%A8re_Goriot\n",
+      "pages": 443,
+      "title": "Le P\u00e8re Goriot",
+      "year": 1835,
+      "stock": 753,
+      "price": 14.99
+    }
+  },
+  {
+    "model": "backend.Books",
+    "pk": 10,
+    "fields": {
+      "author": "Samuel Beckett",
+      "country": "Republic of Ireland",
+      "image": "https://unsplash.com/photos/DRZQLqm-wk8",
+      "language": "French, English",
+      "description": "https://en.wikipedia.org/wiki/Molloy_(novel)\n",
+      "pages": 256,
+      "title": "Molloy, Malone Dies, The Unnamable, the trilogy",
+      "year": 1952,
+      "stock": 78,
+      "price": 29.99
+    }
+  }
+]
