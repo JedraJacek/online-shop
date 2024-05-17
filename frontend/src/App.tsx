@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ChakraProvider, SimpleGrid } from '@chakra-ui/react';
+import { ChakraProvider, SimpleGrid, extendTheme } from '@chakra-ui/react';
 import Content from './components/Content/Content';
 import Navbar from './components/Navbar/Navbar';
 import CartDrawer from './components/Navbar/CartDrawer';
@@ -23,6 +23,18 @@ type CartItem = {
   book: Book;
   quantity: number;
 };
+
+const theme = extendTheme({
+  styles: {
+    global: {
+      body: {
+        fontFamily: `'Roboto', sans-serif`,
+        margin: 0,
+        padding: 0,
+      },
+    },
+  },
+});
 
 function App() {
   const [books, setBooks] = useState<Book[]>([]);
@@ -56,7 +68,7 @@ function App() {
   };
 
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Navbar openCart={() => setDrawerOpen(true)} />
       <SimpleGrid columns={4} spacing={10}>
         {books.map((book) => (
