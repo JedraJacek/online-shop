@@ -1,7 +1,26 @@
 import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Stack, Text, Image } from '@chakra-ui/react';
 import React from 'react';
 
-function Content({ book }) {
+type Book = {
+  pk: number;
+  author: string;
+  country: string;
+  image: string;
+  language: string;
+  description: string;
+  pages: number;
+  title: string;
+  year: number;
+  stock: number;
+  price: number;
+};
+
+// Add type to the component props
+interface ContentProps {
+  book: Book;
+}
+
+function Content({ book } : ContentProps) {
   return (
     <Card maxW='sm'>
       <CardBody>

@@ -4,12 +4,24 @@ import Content from './components/Content/Content';
 import Navbar from './components/Navbar/Navbar';
 import booksData from './mocks/books_mock.json';
 
-function App() {
-  const [books, setBooks] = useState([]);
+type Book = {
+  pk: number;
+  author: string;
+  country: string;
+  image: string;
+  language: string;
+  description: string;
+  pages: number;
+  title: string;
+  year: number;
+  stock: number;
+  price: number;
+};
 
-  useEffect(() => {
-    setBooks(booksData);
-  }, []);
+function App() {
+  const [books, setBooks] = useState<Book[]>([]);
+
+  useEffect(() => setBooks(booksData), []);
 
   return (
     <ChakraProvider>
