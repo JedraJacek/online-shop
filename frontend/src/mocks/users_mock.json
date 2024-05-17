@@ -1,0 +1,13 @@
+[
+    {
+        "model":"backend.users",
+        "pk": 1,
+        "fields" : {
+            "login": "user@example.com",
+            "password": "04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb",
+            "first_name": "Jan",
+            "last_name": "Kowalski" 
+        }
+        
+    }
+]

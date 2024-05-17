@@ -1,0 +1,20 @@
+[
+    {
+        "model":"backend.cart",
+        "pk": 1,
+        "fields": {
+            "product_pk": 3,
+            "user_pk": 1,
+            "count": 1
+        }
+    },
+    {
+        "model":"backend.cart",
+        "pk": 2,
+        "fields": {
+            "product_pk": 8,
+            "user_pk": 1,
+            "count": 2
+        }
+    }
+]

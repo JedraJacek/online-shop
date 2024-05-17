@@ -13,7 +13,7 @@ class Books(models.Model):
     country = models.CharField(max_length=100)
 
 class Cart(models.Model):
-    product_pk = models.ForeignKey(Books, on_delete=models.CASCADE)
+    product_pk = models.ForeignKey(Books, on_delete=models.CASCADE, db_column="product_pk")
     user_pk = models.IntegerField()
     count = models.IntegerField()
 

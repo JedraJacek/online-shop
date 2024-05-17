@@ -9,10 +9,10 @@ class BookSerializer(serializers.ModelSerializer):
         fields = ("pk", "title", "author", "price","stock","image","pages","year","description","language","country")
 
 class CartSerializer(serializers.ModelSerializer):
-
+    product = BookSerializer(source = 'product_pk', read_only = True)
     class Meta:
         model = Cart
-        fields = ("pk","user_pk","count")
+        fields = ("pk","product", "user_pk","count")
 
 class UserSerializer(serializers.ModelSerializer):
 

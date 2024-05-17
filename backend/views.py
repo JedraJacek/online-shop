@@ -11,9 +11,3 @@ class BooksView(APIView):
 
         return Response(serializer.data)
     
-class CartView(APIView):
-    def get(self, request):
-        data = Cart.objects.all()
-        serializer = CartSerializer(data, context={'request': request}, many=True)
-
-        return Response(serializer.data)
