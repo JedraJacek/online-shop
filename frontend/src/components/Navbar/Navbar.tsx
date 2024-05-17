@@ -1,14 +1,16 @@
-import  { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { Avatar, Box, Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { ShoppingCart } from 'lucide-react';
-import CartDrawer from './CartDrawer';
 
 const MotionButton = motion(Button);
 
-export default function Navbar() {
-  const [isDrawerOpen, setDrawerOpen] = useState(false);
-  const btnRef = useRef<HTMLButtonElement>(null);  // Correctly typed reference
+interface NavbarProps {
+  openCart: () => void;
+}
+
+export default function Navbar({ openCart }: NavbarProps) {
+  const btnRef = useRef<HTMLButtonElement>(null);
 
   return (
     <Box
@@ -32,25 +34,20 @@ export default function Navbar() {
       </Menu>
       
       <MotionButton
-        ref={btnRef}  // Correctly typed reference
-        onClick={() => setDrawerOpen(true)}
-        whileHover={{ scale: 1.07 }}  
-        whileTap={{ scale: 0.9 }}  
-        initial={{ scale: 1 }}  
+        ref={btnRef}
+        onClick={openCart}
+        whileHover={{ scale: 1.07 }}
+        whileTap={{ scale: 0.9 }}
+        initial={{ scale: 1 }}
         transition={{
             type: "spring",
             stiffness: 660,
             damping: 20,
             duration: 0.4
-          }}
+        }}
       >
         <ShoppingCart />
       </MotionButton>
-
-      <CartDrawer
-        isOpen={isDrawerOpen}
-        onClose={() => setDrawerOpen(false)}
-      />
     </Box>
   );
 }

@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Heading, Stack, Text, Image } from '@chakra-ui/react';
+import { Button, ButtonGroup, Card, CardBody, CardFooter, Heading, Stack, Text, Image, Tooltip } from '@chakra-ui/react';
 import React from 'react';
 
 type Book = {
@@ -17,9 +17,10 @@ type Book = {
 
 interface ContentProps {
   book: Book;
+  addToCart: (book: Book) => void;
 }
 
-function Content({ book } : ContentProps) {
+function Content({ book, addToCart }: ContentProps) {
   return (
     <Card maxW='sm'>
       <CardBody>
@@ -38,12 +39,16 @@ function Content({ book } : ContentProps) {
 
       <CardFooter>
         <ButtonGroup spacing='2'>
-          <Button variant='solid' colorScheme='blue'>
-            Buy now
-          </Button>
-          <Button variant='ghost' colorScheme='blue'>
-            Add to cart
-          </Button>
+          <Tooltip label="Go to payment page" size={"sm"} openDelay={1000}>
+            <Button variant='solid' colorScheme='blue'>
+              Buy now
+            </Button>
+          </Tooltip>
+          <Tooltip label='Add item to cart' fontSize={"sm"} openDelay={1000}>
+            <Button variant='ghost' colorScheme='blue' onClick={() => addToCart(book)}>
+              Add to cart
+            </Button>
+          </Tooltip>
         </ButtonGroup>
       </CardFooter>
     </Card>
