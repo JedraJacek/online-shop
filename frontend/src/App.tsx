@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { ChakraProvider, SimpleGrid, extendTheme } from '@chakra-ui/react';
+import { ChakraProvider, SimpleGrid, ColorModeScript, extendTheme } from '@chakra-ui/react';
 import Content from './components/Content/Content';
 import Navbar from './components/Navbar/Navbar';
 import CartDrawer from './components/Navbar/CartDrawer';
 import booksData from './mocks/books_mock.json';
+import theme from './theme';
 
 type Book = {
   pk: number;
@@ -69,6 +70,7 @@ function App() {
 
   return (
     <ChakraProvider theme={theme}>
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <Navbar openCart={() => setDrawerOpen(true)} />
       <SimpleGrid columns={4} spacing={10}>
         {books.map((book) => (

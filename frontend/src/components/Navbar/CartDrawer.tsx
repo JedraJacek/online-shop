@@ -19,6 +19,15 @@ import {
   useToast
 } from '@chakra-ui/react';
 
+interface CartDrawerProps {
+  isOpen: boolean;
+  onClose: () => void; 
+}
+
+const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
+
+ 
+
 type Book = {
   pk: number;
   author: string;
@@ -55,6 +64,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, removeFr
       placement="right"
       onClose={onClose}
       size="md"
+
     >
       <DrawerOverlay />
       <DrawerContent>
@@ -62,6 +72,9 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, removeFr
         <DrawerHeader>Your Shopping Cart</DrawerHeader>
         
         <DrawerBody>
+
+          <Text>No items in the cart.</Text>
+
           {cart.length === 0 ? (
             <Text>No items in the cart.</Text>
           ) : (
@@ -106,6 +119,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, removeFr
               Close
             </Button>
             <Button colorScheme="blue" onClick={() => alert('Continue to payment!')}>
+
               Buy
             </Button>
           </Box>
