@@ -15,7 +15,8 @@ import {
   NumberInputField,
   NumberInputStepper,
   NumberIncrementStepper,
-  NumberDecrementStepper
+  NumberDecrementStepper,
+  useToast
 } from '@chakra-ui/react';
 
 type Book = {
@@ -46,6 +47,8 @@ interface CartDrawerProps {
 }
 
 const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, removeFromCart, updateQuantity }) => {
+  const toast = useToast();
+
   return (
     <Drawer
       isOpen={isOpen}
@@ -79,7 +82,16 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, removeFr
                       <NumberDecrementStepper />
                     </NumberInputStepper>
                   </NumberInput>
-                  <Button colorScheme="red" onClick={() => removeFromCart(item.book.pk)}>
+                  <Button colorScheme="red" onClick={() => {
+                    removeFromCart(item.book.pk);
+                    toast({
+                      title: 'Item removed.',
+                      description: "The item has been removed from your cart.",
+                      status: 'error',
+                      duration: 3000,
+                      isClosable: true,
+                    });
+                  }}>
                     Remove
                   </Button>
                 </HStack>
