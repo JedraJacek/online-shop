@@ -15,7 +15,6 @@ type Book = {
   price: number;
 };
 
-// Add type to the component props
 interface ContentProps {
   book: Book;
 }
