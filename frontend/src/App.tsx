@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { ChakraProvider, SimpleGrid } from '@chakra-ui/react';
+import { ChakraProvider, SimpleGrid, ColorModeScript } from '@chakra-ui/react';
 import Content from './components/Content/Content';
 import Navbar from './components/Navbar/Navbar';
 import booksData from './mocks/books_mock.json';
+import theme from './theme';
 
 type Book = {
   pk: number;
@@ -24,7 +25,8 @@ function App() {
   useEffect(() => setBooks(booksData), []);
 
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <Navbar />
       <SimpleGrid columns={4} spacing={10}>
         {books.map((book) => (

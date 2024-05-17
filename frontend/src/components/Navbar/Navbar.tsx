@@ -1,18 +1,18 @@
-import  { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Avatar, Box, Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart} from 'lucide-react';
 import CartDrawer from './CartDrawer';
+import ThemeToggle from './ThemeToggle';
 
 const MotionButton = motion(Button);
 
 export default function Navbar() {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
-  const btnRef = useRef<HTMLButtonElement>(null);  // Correctly typed reference
+  const btnRef = useRef<HTMLButtonElement>(null);
 
   return (
     <Box
-      bgColor="lightgray"
       w="full"
       display="flex"
       alignItems="center"
@@ -21,7 +21,7 @@ export default function Navbar() {
       py={2}
     >
       <Menu>
-        <MenuButton bgColor={'lightgray'} as={Button} p={0} minW={0} >
+        <MenuButton borderRadius={50} as={Button} p={0} minW={0} >
           <Avatar name='Dominik Wojtysik' opacity={100} />
         </MenuButton>
         <MenuList>
@@ -31,8 +31,11 @@ export default function Navbar() {
         </MenuList>
       </Menu>
       
+      <ThemeToggle />
+      
+
       <MotionButton
-        ref={btnRef}  // Correctly typed reference
+        ref={btnRef}
         onClick={() => setDrawerOpen(true)}
         whileHover={{ scale: 1.07 }}  
         whileTap={{ scale: 0.9 }}  

@@ -14,7 +14,7 @@ import {
 
 interface CartDrawerProps {
   isOpen: boolean;
-  onClose: () => void;
+  onClose: () => void; 
 }
 
 const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
@@ -31,7 +31,6 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
         <DrawerHeader>Your Shopping Cart</DrawerHeader>
         
         <DrawerBody>
-          {/* Simple text message indicating the cart is empty */}
           <Text>No items in the cart.</Text>
         </DrawerBody>
 
