@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.test',
     'backend',
+    'backend.views',
     'rest_framework'
 ]
 
