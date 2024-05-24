@@ -27,3 +27,5 @@ class getUser(generics.CreateAPIView):
             return Response(data, context={'request': request}, many = False)
         except:
             return Response({'error': 'user not found'}, status=status.HTTP_401_UNAUTHORIZED)
+
+
