@@ -4,7 +4,6 @@ import Content from './components/Content/Content';
 import Navbar from './components/Navbar/Navbar';
 import CartDrawer from './components/Navbar/CartDrawer';
 import booksData from './mocks/books_mock.json';
-import theme from './theme';
 
 type Book = {
   pk: number;
@@ -25,7 +24,7 @@ type CartItem = {
   quantity: number;
 };
 
-const theme = extendTheme({
+const customTheme = extendTheme({
   styles: {
     global: {
       body: {
@@ -69,8 +68,8 @@ function App() {
   };
 
   return (
-    <ChakraProvider theme={theme}>
-      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+    <ChakraProvider theme={customTheme}>
+      <ColorModeScript initialColorMode="light" />
       <Navbar openCart={() => setDrawerOpen(true)} />
       <SimpleGrid columns={4} spacing={10}>
         {books.map((book) => (
