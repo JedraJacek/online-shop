@@ -19,10 +19,11 @@ from django.urls import path
 from backend.views import *
 from backend.cartViews import *
 from backend.userViews import *
+from backend.bookViews import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('books/', BooksView.as_view()),
+    path('books/', BookView.as_view()),
     path('cart/', CartView.as_view()),
     path('users/', UserView.as_view()),
     path('cart/add/', updateCart.as_view()),
