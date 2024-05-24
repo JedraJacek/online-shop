@@ -17,8 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from backend.views import *
-from backend.cartViews import *
-from backend.userViews import *
+from backend.views.cart.cartViews import *
+from backend.views.user.userViews import *
 from backend.bookViews import *
 
 urlpatterns = [
