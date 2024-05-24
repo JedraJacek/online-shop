@@ -29,7 +29,7 @@ const updateCart = async (product : {product_pk: number, user_pk: number, count:
       method: "POST",
       body: JSON.stringify(params),
     };
-    // return new Response() //temporaty mocked
+    return new Response() //temporaty mocked
     return await fetch(
       `${urls.django}/cart/update/`,
       options
