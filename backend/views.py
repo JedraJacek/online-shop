@@ -24,3 +24,14 @@ class AddressView(APIView):
         serializer = AddressSerializer(data, context={'request': request}, many=True)
 
         return Response(serializer.data)
+    
+        
+class BooksByAuthorView(APIView):
+    def get(self, request):
+
+        data = Books.objects.filter(author=request.query_params.get('author'))
+        
+        serializer = BookSerializer(data, context={'request': request}, many=True)
+
+
+        return Response(serializer.data)
