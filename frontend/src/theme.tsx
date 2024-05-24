@@ -11,10 +11,16 @@ const styles = {
     body: {
       bg: mode("white", "gray.800")(props),
       color: mode("gray.800", "white")(props),
+      fontFamily: `'Roboto', sans-serif`,
     },
   }),
 };
 
-const theme = extendTheme({ config, styles });
+const fonts = {
+  body: `'Roboto', sans-serif`,
+  heading: `'Roboto', sans-serif`,
+};
+
+const theme = extendTheme({ config, styles, fonts });
 
 export default theme;

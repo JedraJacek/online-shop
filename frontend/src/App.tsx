@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-import { ChakraProvider, SimpleGrid, ColorModeScript, extendTheme, useToast } from '@chakra-ui/react';
+import { ChakraProvider, SimpleGrid, ColorModeScript, useToast } from '@chakra-ui/react';
 import Content from './components/Content/Content';
 import Navbar from './components/Navbar/Navbar';
 import CartDrawer from './components/Navbar/CartDrawer';
+import OrderSummaryModal from './components/Navbar/OrderSummaryModal';
 import BookDetailsDrawer from './components/BookDetailsDrawer/BookDetailsDrawer';
 import booksData from './mocks/books_mock.json';
+import customTheme from './theme';
 
 type Book = {
   pk: number;
@@ -25,37 +27,49 @@ type CartItem = {
   quantity: number;
 };
 
-const customTheme = extendTheme({
-  styles: {
-    global: {
-      body: {
-        fontFamily: `'Roboto', sans-serif`,
-        margin: 0,
-        padding: 0,
-      },
-    },
-  },
-});
-
 function App() {
   const [books, setBooks] = useState<Book[]>([]);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
   const [isBookDetailsOpen, setBookDetailsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [openModalAfterUpdate, setOpenModalAfterUpdate] = useState(false);
   const toast = useToast();
 
   useEffect(() => setBooks(booksData), []);
 
-  const addToCart = (book: Book) => {
+  useEffect(() => {
+    if (openModalAfterUpdate) {
+      if (cart.length > 0) {
+        setIsModalOpen(true);
+      } else {
+        toast({
+          title: 'Cart is empty.',
+          description: "Please add items to your cart before proceeding to payment.",
+          status: 'error',
+          duration: 3000,
+          isClosable: true,
+        });
+      }
+      setOpenModalAfterUpdate(false);
+    }
+  }, [cart, openModalAfterUpdate, toast]);
+
+  const addToCart = (book: Book, callback?: () => void) => {
     setCart((prevCart) => {
       const existingItem = prevCart.find((item) => item.book.pk === book.pk);
-      if (existingItem) {
-        return prevCart.map((item) =>
-          item.book.pk === book.pk ? { ...item, quantity: item.quantity + 1 } : item
-        );
+      const updatedCart = existingItem
+        ? prevCart.map((item) =>
+            item.book.pk === book.pk ? { ...item, quantity: item.quantity + 1 } : item
+          )
+        : [...prevCart, { book, quantity: 1 }];
+      
+      if (callback) {
+        callback();
       }
-      return [...prevCart, { book, quantity: 1 }];
+
+      return updatedCart;
     });
 
     toast({
@@ -79,9 +93,20 @@ function App() {
     );
   };
 
+  const handleBuyNow = (book: Book) => {
+    addToCart(book, () => {
+      setDrawerOpen(true);
+      setOpenModalAfterUpdate(true);
+    });
+  };
+
   const openBookDetails = (book: Book) => {
     setSelectedBook(book);
     setBookDetailsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -90,7 +115,13 @@ function App() {
       <Navbar openCart={() => setDrawerOpen(true)} />
       <SimpleGrid columns={4} spacing={10}>
         {books.map((book) => (
-          <Content key={book.pk} book={book} addToCart={addToCart} openBookDetails={openBookDetails} />
+          <Content 
+            key={book.pk} 
+            book={book} 
+            addToCart={(book) => addToCart(book)} 
+            handleBuyNow={handleBuyNow} 
+            openBookDetails={openBookDetails}
+          />
         ))}
       </SimpleGrid>
       <CartDrawer
@@ -99,6 +130,13 @@ function App() {
         cart={cart}
         removeFromCart={removeFromCart}
         updateQuantity={updateQuantity}
+        openModal={() => setOpenModalAfterUpdate(true)}
+      />
+      <OrderSummaryModal 
+        isOpen={isModalOpen} 
+        onClose={closeModal} 
+        totalPrice={cart.reduce((total, item) => total + item.book.price * item.quantity, 0)} 
+        cart={cart} 
       />
       {selectedBook && (
         <BookDetailsDrawer

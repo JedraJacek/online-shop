@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Card, CardBody, CardFooter, Heading, Stack, Text, Image, Tooltip} from '@chakra-ui/react';
+import { Button, ButtonGroup, Card, CardBody, CardFooter, Heading, Stack, Text, Image, Tooltip, useToast } from '@chakra-ui/react';
 
 type Book = {
   pk: number;
@@ -17,10 +17,13 @@ type Book = {
 interface ContentProps {
   book: Book;
   addToCart: (book: Book) => void;
+  handleBuyNow: (book: Book) => void;
   openBookDetails: (book: Book) => void;
 }
 
-function Content({ book, addToCart, openBookDetails }: ContentProps) {
+function Content({ book, addToCart, handleBuyNow, openBookDetails }: ContentProps) {
+  const toast = useToast();
+
   return (
     <Card maxW='sm'>
       <CardBody onClick={() => openBookDetails(book)} cursor="pointer">
@@ -39,14 +42,21 @@ function Content({ book, addToCart, openBookDetails }: ContentProps) {
 
       <CardFooter>
         <ButtonGroup spacing='2'>
-          <Tooltip label="Go to payment page" size={"sm"} openDelay={1000}>
-            <Button variant='solid' colorScheme='blue'>
-              Buy now
+          <Tooltip label='Add item to cart and proceed to checkout' fontSize={"sm"} openDelay={1000}>
+            <Button onClick={() => handleBuyNow(book)}>
+              Buy Now
             </Button>
           </Tooltip>
           <Tooltip label='Add item to cart' fontSize={"sm"} openDelay={1000}>
             <Button variant='ghost' colorScheme='blue' onClick={() => {
               addToCart(book);
+              toast({
+                title: 'Added item to cart',
+                description: "Your item is in the cart.",
+                status: 'success',
+                duration: 2000,
+                isClosable: true,
+              });
             }}>
               Add to cart
             </Button>

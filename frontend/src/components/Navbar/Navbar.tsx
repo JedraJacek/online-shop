@@ -1,8 +1,7 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { Avatar, Box, Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { ShoppingCart } from 'lucide-react';
-import CartDrawer from './CartDrawer';
 import ThemeToggle from './ThemeToggle';
 
 interface NavbarProps {
@@ -10,7 +9,6 @@ interface NavbarProps {
 }
 
 export default function Navbar({ openCart }: NavbarProps) {
-  const [isDrawerOpen, setDrawerOpen] = useState(false);
   const btnRef = useRef<HTMLButtonElement>(null);
   const MotionButton = motion(Button);
 
@@ -51,14 +49,6 @@ export default function Navbar({ openCart }: NavbarProps) {
       >
         <ShoppingCart />
       </MotionButton>
-      
-      <CartDrawer
-        isOpen={isDrawerOpen}
-        onClose={() => setDrawerOpen(false)}
-        cart={[]} // You need to pass cart, removeFromCart, and updateQuantity here
-        removeFromCart={() => {}} // Placeholder functions
-        updateQuantity={() => {}} // Placeholder functions
-      />
     </Box>
   );
 }
