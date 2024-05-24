@@ -1,13 +1,12 @@
-from django.shortcuts import render
 from rest_framework.views import APIView
-from ....models import Cart, Books
+from ....models import Cart
 from ....serializers import *
 from rest_framework.response import Response
-from rest_framework import generics, status
+from backend.ApiResponse import *
 
 class CartView(APIView):
     def get(self, request):
         data_with_related = Cart.objects.select_related("product_pk").all()
         serializer = CartSerializer(data_with_related, context={'request': request}, many=True)
 
-        return Response(serializer.data)
+        return ApiResponse.ok(serializer.data)

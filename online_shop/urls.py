@@ -16,16 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from backend.views import *
-from backend.views.cart.cartViews import *
-from backend.views.user.userViews import *
-from backend.bookViews import *
+from backend.all_views import *
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('books/', BookView.as_view()),
-    path('cart/', CartView.as_view()),
+    path('book/', getBookView.as_view()),
     path('users/', UserView.as_view()),
+    path('user/', getUser.as_view()),
+    path('users/add/', RegisterUser.as_view()),
+    path('users/delete/', DeleteUser.as_view()),
+    path('users/login/', LoginUser.as_view()),
+    path('cart/', CartView.as_view()),
     path('cart/add/', updateCart.as_view()),
     path('cart/delete/', removeFromCart.as_view())
 ]
