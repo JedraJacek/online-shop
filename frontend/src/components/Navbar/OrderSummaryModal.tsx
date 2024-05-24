@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Modal,
   ModalOverlay,
@@ -56,6 +56,12 @@ const OrderSummaryModal: React.FC<OrderSummaryModalProps> = ({ isOpen, onClose, 
     apartment: '',
   });
   const [paymentMethod, setPaymentMethod] = useState('');
+
+  useEffect(() => {
+    if (isOpen) {
+      setCurrentStep(0);
+    }
+  }, [isOpen]);
 
   const steps = [
     { title: 'Items & Price', description: 'Review your items and total price.' },

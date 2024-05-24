@@ -50,13 +50,6 @@ function Content({ book, addToCart, handleBuyNow, openBookDetails }: ContentProp
           <Tooltip label='Add item to cart' fontSize={"sm"} openDelay={1000}>
             <Button variant='ghost' colorScheme='blue' onClick={() => {
               addToCart(book);
-              toast({
-                title: 'Added item to cart',
-                description: "Your item is in the cart.",
-                status: 'success',
-                duration: 2000,
-                isClosable: true,
-              });
             }}>
               Add to cart
             </Button>
