@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { ChakraProvider, SimpleGrid, ColorModeScript, extendTheme, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, Image, Stack, Text, Box } from '@chakra-ui/react';
+import { ChakraProvider, SimpleGrid, ColorModeScript, extendTheme, useToast } from '@chakra-ui/react';
 import Content from './components/Content/Content';
 import Navbar from './components/Navbar/Navbar';
 import CartDrawer from './components/Navbar/CartDrawer';
+import BookDetailsDrawer from './components/BookDetailsDrawer/BookDetailsDrawer';
 import booksData from './mocks/books_mock.json';
 
 type Book = {
@@ -42,6 +43,7 @@ function App() {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
   const [isBookDetailsOpen, setBookDetailsOpen] = useState(false);
+  const toast = useToast();
 
   useEffect(() => setBooks(booksData), []);
 
@@ -54,6 +56,14 @@ function App() {
         );
       }
       return [...prevCart, { book, quantity: 1 }];
+    });
+
+    toast({
+      title: 'Added item to cart',
+      description: "Your item is in the cart.",
+      status: 'success',  
+      duration: 2000,
+      isClosable: true,
     });
   };
 
@@ -74,11 +84,6 @@ function App() {
     setBookDetailsOpen(true);
   };
 
-  const closeBookDetails = () => {
-    setSelectedBook(null);
-    setBookDetailsOpen(false);
-  };
-
   return (
     <ChakraProvider theme={customTheme}>
       <ColorModeScript initialColorMode="light" />
@@ -96,36 +101,12 @@ function App() {
         updateQuantity={updateQuantity}
       />
       {selectedBook && (
-        <Modal isOpen={isBookDetailsOpen} onClose={closeBookDetails}>
-          <ModalOverlay />
-          <ModalContent maxW="800px">
-            <ModalHeader>{selectedBook.title}</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              <SimpleGrid columns={{ base: 1, md: 2 }}>
-                <Box alignItems="center">
-                  <Image maxW="300px" src={selectedBook.image} alt={selectedBook.title} borderRadius="lg" />
-                </Box>
-                <Stack spacing={3}>
-                  <Text><strong>Author:</strong> {selectedBook.author}</Text>
-                  <Text><strong>Country:</strong> {selectedBook.country}</Text>
-                  <Text><strong>Language:</strong> {selectedBook.language}</Text>
-                  <Text><strong>Description:</strong> {selectedBook.description}</Text>
-                  <Text><strong>Pages:</strong> {selectedBook.pages}</Text>
-                  <Text><strong>Year:</strong> {selectedBook.year}</Text>
-                  <Text><strong>Stock:</strong> {selectedBook.stock}</Text>
-                  <Text><strong>Price:</strong> ${selectedBook.price}</Text>
-                </Stack>
-              </SimpleGrid>
-            </ModalBody>
-            <ModalFooter>
-              <Button variant="outline" mr={3} onClick={closeBookDetails}>
-                Close
-              </Button>
-              <Button colorScheme="blue" onClick={() => addToCart(selectedBook)}>Add to Cart</Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
+        <BookDetailsDrawer
+          isOpen={isBookDetailsOpen}
+          onClose={() => setBookDetailsOpen(false)}
+          book={selectedBook}
+          addToCart={addToCart}
+        />
       )}
     </ChakraProvider>
   );
