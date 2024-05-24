@@ -1,5 +1,4 @@
 import { Button, ButtonGroup, Card, CardBody, CardFooter, Heading, Stack, Text, Image, Tooltip, useToast } from '@chakra-ui/react';
-import React from 'react';
 
 type Book = {
   pk: number;
@@ -18,14 +17,14 @@ type Book = {
 interface ContentProps {
   book: Book;
   addToCart: (book: Book) => void;
+  openBookDetails: (book: Book) => void;
 }
 
-
-function Content({ book, addToCart }: ContentProps) {
-  const toast = useToast()
+function Content({ book, addToCart, openBookDetails }: ContentProps) {
+  const toast = useToast();
   return (
     <Card maxW='sm'>
-      <CardBody>
+      <CardBody onClick={() => openBookDetails(book)} cursor="pointer">
         <Image
           src={book.image}
           alt={book.title}
@@ -47,14 +46,16 @@ function Content({ book, addToCart }: ContentProps) {
             </Button>
           </Tooltip>
           <Tooltip label='Add item to cart' fontSize={"sm"} openDelay={1000}>
-            <Button variant='ghost' colorScheme='blue' onClick={() => {addToCart(book);
-            toast({
-          title: 'Added item to cart',
-          description: "Your item is in a cart.",
-          status: 'success',
-          duration: 9000,
-          isClosable: true,
-        })}}>
+            <Button variant='ghost' colorScheme='blue' onClick={() => {
+              addToCart(book);
+              toast({
+                title: 'Added item to cart',
+                description: "Your item is in the cart.",
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+              });
+            }}>
               Add to cart
             </Button>
           </Tooltip>
