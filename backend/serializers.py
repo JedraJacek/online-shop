@@ -16,7 +16,8 @@ class CartSerializer(serializers.ModelSerializer):
         fields = ("pk","product", "user_pk","count")
 
 class CartAddSerializer(serializers.ModelSerializer):
-    product_pk = serializers.PrimaryKeyRelatedField(read_only=False, queryset= Books.objects.all())
+    product_pk = serializers.PrimaryKeyRelatedField(read_only=True, queryset= Books.objects.all())
+    user_pk = serializers.PrimaryKeyRelatedField(read_only=True, queryset=Users.objects.all())
     
     class Meta:
         model = Cart

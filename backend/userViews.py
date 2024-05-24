@@ -4,6 +4,7 @@ from .models import Users
 from .serializers import UserSerializer
 from rest_framework.response import Response
 from rest_framework import generics, status
+from backend.ApiResponse import *
 
 class UserView(APIView):
     def get(self, request):
@@ -28,4 +29,12 @@ class getUser(generics.CreateAPIView):
         except:
             return Response({'error': 'user not found'}, status=status.HTTP_401_UNAUTHORIZED)
 
+
+class RegisterUser(generics.CreateAPIView):
+    def get(self, request):
+        try:
+            Users.objects.get(login = request.data.get('login'))
+            return ApiResponse.forbidden
+        except:
+            
 
