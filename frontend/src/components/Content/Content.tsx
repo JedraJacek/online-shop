@@ -18,11 +18,11 @@ type Book = {
 interface ContentProps {
   book: Book;
   addToCart: (book: Book) => void;
+  handleBuyNow: (book: Book) => void;
 }
 
-
-function Content({ book, addToCart }: ContentProps) {
-  const toast = useToast()
+function Content({ book, addToCart, handleBuyNow }: ContentProps) {
+  const toast = useToast();
   return (
     <Card maxW='sm'>
       <CardBody>
@@ -41,20 +41,22 @@ function Content({ book, addToCart }: ContentProps) {
 
       <CardFooter>
         <ButtonGroup spacing='2'>
-          <Tooltip label="Go to payment page" size={"sm"} openDelay={1000}>
-            <Button variant='solid' colorScheme='blue'>
-              Buy now
+          <Tooltip label='Add item to cart and proceed to checkout' fontSize={"sm"} openDelay={1000}>
+            <Button onClick={() => handleBuyNow(book)}>
+              Buy Now
             </Button>
           </Tooltip>
           <Tooltip label='Add item to cart' fontSize={"sm"} openDelay={1000}>
-            <Button variant='ghost' colorScheme='blue' onClick={() => {addToCart(book);
-            toast({
-          title: 'Added item to cart',
-          description: "Your item is in a cart.",
-          status: 'success',
-          duration: 9000,
-          isClosable: true,
-        })}}>
+            <Button variant='ghost' colorScheme='blue' onClick={() => {
+              addToCart(book);
+              toast({
+                title: 'Added item to cart',
+                description: "Your item is in the cart.",
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+              });
+            }}>
               Add to cart
             </Button>
           </Tooltip>
