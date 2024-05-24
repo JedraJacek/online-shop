@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { ChakraProvider, SimpleGrid, ColorModeScript, useToast } from '@chakra-ui/react';
 import Content from './components/Content/Content';
 import Navbar from './components/Navbar/Navbar';
 import CartDrawer from './components/Navbar/CartDrawer';
 import OrderSummaryModal from './components/Navbar/OrderSummaryModal';
+import BookDetailsDrawer from './components/BookDetailsDrawer/BookDetailsDrawer';
 import booksData from './mocks/books_mock.json';
 import customTheme from './theme';
 
@@ -30,6 +31,8 @@ function App() {
   const [books, setBooks] = useState<Book[]>([]);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isDrawerOpen, setDrawerOpen] = useState(false);
+  const [selectedBook, setSelectedBook] = useState<Book | null>(null);
+  const [isBookDetailsOpen, setBookDetailsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [openModalAfterUpdate, setOpenModalAfterUpdate] = useState(false);
   const toast = useToast();
@@ -68,6 +71,14 @@ function App() {
 
       return updatedCart;
     });
+
+    toast({
+      title: 'Added item to cart',
+      description: "Your item is in the cart.",
+      status: 'success',  
+      duration: 2000,
+      isClosable: true,
+    });
   };
 
   const removeFromCart = (bookPk: number) => {
@@ -89,6 +100,11 @@ function App() {
     });
   };
 
+  const openBookDetails = (book: Book) => {
+    setSelectedBook(book);
+    setBookDetailsOpen(true);
+  };
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -104,6 +120,7 @@ function App() {
             book={book} 
             addToCart={(book) => addToCart(book)} 
             handleBuyNow={handleBuyNow} 
+            openBookDetails={openBookDetails}
           />
         ))}
       </SimpleGrid>
@@ -121,6 +138,14 @@ function App() {
         totalPrice={cart.reduce((total, item) => total + item.book.price * item.quantity, 0)} 
         cart={cart} 
       />
+      {selectedBook && (
+        <BookDetailsDrawer
+          isOpen={isBookDetailsOpen}
+          onClose={() => setBookDetailsOpen(false)}
+          book={selectedBook}
+          addToCart={addToCart}
+        />
+      )}
     </ChakraProvider>
   );
 }
